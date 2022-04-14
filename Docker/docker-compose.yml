@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  database:
+    image: 'mongo'
+    container_name: 'common-mongodb2'
+    environment: 
+      - MONGO_INITDB_DATABASE='commonMongoDb'
+      - MONGO-INITDB_USERNAME='ram'
+      - MONGO-INITDB-PASSWORD='password'
+    networks:
+      - custom-net
+    volumes:
+      - ./docker-entrypoint-initdb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db/Emp
+    ports:
+      - '27020:27017'
+networks:
+  custom-net:
+     name: custom-net

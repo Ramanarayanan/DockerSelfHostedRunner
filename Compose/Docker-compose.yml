@@ -1,0 +1,19 @@
+version: "3.8"
+
+
+services:
+  mongoapi:
+    build:
+      context: .
+      dockerfile: /Dockerfile
+    image: mongowebapi
+    container_name: mongowebapi-cont
+    environment: 
+        DB_HOST: db ## same as the database service name
+        DB_DATABASE: notesdb
+        DB_PASSWORD: secret
+    volumes: 
+            - /webapi
+    ports: 
+            - 5004:80
+        

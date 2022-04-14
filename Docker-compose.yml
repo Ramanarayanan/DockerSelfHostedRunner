@@ -1,0 +1,29 @@
+version: "3.8"
+
+
+services:
+  mongoapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mongowebapi
+    container_name: mongowebapi-cont
+    #networks:
+    #  - custom-net
+    environment: 
+        DB_HOST: db ## same as the database service name
+        DB_DATABASE: notesdb
+        DB_PASSWORD: secret
+    volumes: 
+            - /webapi
+    ports: 
+            - 5004:80
+        
+#networks:
+#    default:
+#        external:
+#            name: custom-net
+#networks:
+#     custom-net:
+#        external: true
+#        name: custom-net
