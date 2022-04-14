@@ -1,0 +1,10 @@
+﻿{
+    "_id" : ObjectId("62583b6eadd3e99edf614681"),
+    "Name" : "Ram",
+    "Address" : "Ambattur53",
+    "Phone" : "89890909656565",
+    "Email" : "Test@gmail.com"
+}
+
+Employees
+EmployeeDB

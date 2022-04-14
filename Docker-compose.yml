@@ -8,8 +8,10 @@ services:
       dockerfile: Dockerfile
     image: mongowebapi
     container_name: mongowebapi-cont
-    #networks:
-    #  - custom-net
+    networks:
+      backend:
+        ipv4_address: 172.60.0.10 ##No mandatory but must be in same bridge
+     
     environment: 
         DB_HOST: db ## same as the database service name
         DB_DATABASE: notesdb
@@ -27,3 +29,7 @@ services:
 #     custom-net:
 #        external: true
 #        name: custom-net
+networks:
+     backend:
+        external: true
+        name: custom-net

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 
 services:
   database:
@@ -8,13 +8,23 @@ services:
       - MONGO_INITDB_DATABASE='commonMongoDb'
       - MONGO-INITDB_USERNAME='ram'
       - MONGO-INITDB-PASSWORD='password'
+    #networks:
+    #  - custom-net
     networks:
-      - custom-net
+      backend:
+        ipv4_address: 172.60.0.5
+ 
     volumes:
       - ./docker-entrypoint-initdb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - ./mongo-volume:/data/db/Emp
     ports:
       - '27020:27017'
+#networks:
+#  custom-net:
+#     name: custom-net
 networks:
-  custom-net:
-     name: custom-net
+  backend:
+    name: custom-net
+    ipam:
+      config:
+        - subnet: 172.60.0.0/24
