@@ -24,4 +24,7 @@ jobs:
     - name: Test
       run: |
           dotnet test --no-build --verbosity normal
+          dotnet new mstest
+          dotnet add package TeamCity.dotCover
+          dotnet test
       
